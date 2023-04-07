@@ -1,5 +1,5 @@
 function Landing() {
-	return <p>asdasd</p>
+	return <p>Landing</p>
 }
 
 export default Landing

@@ -12,6 +12,8 @@
     "rules": {
         "prettier/prettier": "error",
         "import/prefer-default-export": "off",
+        "import/no-named-as-default": 0,
+        "import/no-named-as-default-member": 0,
         "react/react-in-jsx-scope": "off",
         "react/jsx-props-no-spreading": "off",
         "curly": [
