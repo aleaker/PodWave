@@ -12,6 +12,7 @@ export const SearchContainer = styled.div`
 
 export const CardsContainer = styled.div`
 	display: flex;
-	justify-content: flex-start;
+	justify-content: center;
 	flex-wrap: wrap;
+	gap: 50px 30px;
 `
