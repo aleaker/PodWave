@@ -2,9 +2,9 @@ import PropTypes from "prop-types"
 
 import { DisplayCardContainer } from "./DisplayCard.styles"
 
-const DisplayCard = ({ href, children, ClassName }) => {
+const DisplayCard = ({ href, children, className }) => {
 	return (
-		<DisplayCardContainer $isClickable={href} ClassName={ClassName}>
+		<DisplayCardContainer $isClickable={href} className={className}>
 			{children}
 		</DisplayCardContainer>
 	)
@@ -12,12 +12,12 @@ const DisplayCard = ({ href, children, ClassName }) => {
 
 DisplayCard.defaultProps = {
 	href: "",
-	ClassName: "",
+	className: "",
 }
 
 DisplayCard.propTypes = {
 	children: PropTypes.element.isRequired,
-	ClassName: PropTypes.string,
+	className: PropTypes.string,
 	href: PropTypes.string,
 }
 
