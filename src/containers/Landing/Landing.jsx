@@ -1,9 +1,13 @@
+import SearchBar from "components/landing/SearchBar/SearchBar"
+
 import { LandingContainer, SearchContainer, CardsContainer } from "./Landing.styles"
 
 const Landing = () => {
 	return (
 		<LandingContainer>
-			<SearchContainer> Search </SearchContainer>
+			<SearchContainer>
+				<SearchBar />
+			</SearchContainer>
 			<CardsContainer> Cards </CardsContainer>
 		</LandingContainer>
 	)
