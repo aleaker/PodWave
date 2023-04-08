@@ -7,15 +7,15 @@ export const StyledDisplayCard = styled(DisplayCard)`
 `
 
 export const PodcastLogo = styled.img`
-position: absolute;
-height: 160px;
-border-radius: 50%;
-object-fit: scale-down;
-top: -50%;
-left: 0;
-right: 0;
-margin-left: auto;
-margin-right: auto;
+    position: absolute;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: scale-down;
+    top: -50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 `
 
