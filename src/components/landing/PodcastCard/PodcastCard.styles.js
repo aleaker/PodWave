@@ -3,6 +3,7 @@ import DisplayCard from "components/general/DisplayCard/DisplayCard"
 
 export const StyledDisplayCard = styled(DisplayCard)`
 	margin-top: 80px;
+	justify-content: flex-end;
 `
 
 export const PodcastLogo = styled.img`
@@ -15,6 +16,15 @@ left: 0;
 right: 0;
 margin-left: auto;
 margin-right: auto;
+}
+`
+
+export const TextContainer = styled.div`
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 }
 `
 
