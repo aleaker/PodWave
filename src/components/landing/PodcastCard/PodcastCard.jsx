@@ -1,19 +1,19 @@
 import PropTypes from "prop-types"
 
-import { Title, AuthorData } from "./PodcastCard.styles"
+import { StyledDisplayCard, Title, AuthorData } from "./PodcastCard.styles"
 
 const PodcastCard = ({ title, author }) => {
 	return (
-		<div>
-			{title?<Title> {title} </Title>:null}
-			{author?<AuthorData>Author: {author}</AuthorData>:null}
-        </div>
+		<StyledDisplayCard>
+			{title ? <Title> {title} </Title> : null}
+			{author ? <AuthorData>Author: {author}</AuthorData> : null}
+		</StyledDisplayCard>
 	)
 }
 
 PodcastCard.defaultProps = {
-    title: "",
-	author: ""
+	title: "",
+	author: "",
 }
 
 PodcastCard.propTypes = {

@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import SearchBar from "components/landing/SearchBar/SearchBar"
+import PodcastCard from "components/landing/PodcastCard/PodcastCard"
 
 import { debounce } from "util/helpers"
 
@@ -20,7 +21,9 @@ const Landing = () => {
 			<SearchContainer>
 				<SearchBar handleSearch={handleSearch} />
 			</SearchContainer>
-			<CardsContainer> Cards </CardsContainer>
+			<CardsContainer>
+				<PodcastCard />
+			</CardsContainer>
 		</LandingContainer>
 	)
 }
