@@ -2,11 +2,11 @@ import PropTypes from "prop-types"
 
 import { SearchBarContainer, AmountDisplay, Input } from "./SearchBar.styles"
 
-const SearchBar = ({ loading, amount }) => {
+const SearchBar = ({ loading, amount, handleSearch }) => {
 	return (
 		<SearchBarContainer>
 			<AmountDisplay> {loading ? amount : "loading"} </AmountDisplay>
-			<Input />
+			<Input placeholder="Filter podcasts..." onChange={handleSearch} />
 		</SearchBarContainer>
 	)
 }
@@ -17,6 +17,7 @@ SearchBar.defaultProps = {
 }
 
 SearchBar.propTypes = {
+	handleSearch: PropTypes.func.isRequired,
 	loading: PropTypes.bool,
 	amount: PropTypes.number,
 }
