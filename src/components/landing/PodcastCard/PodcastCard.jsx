@@ -4,7 +4,7 @@ import { StyledDisplayCard, PodcastLogo, TextContainer, Title, AuthorData } from
 
 const PodcastCard = ({ title, author, imgSrc }) => {
 	return (
-		<StyledDisplayCard>
+		<StyledDisplayCard href="/">
 			<PodcastLogo src={imgSrc} alt="podcast logo" />
 			<TextContainer>
 				{title ? <Title> {title} </Title> : null}
