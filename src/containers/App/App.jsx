@@ -4,7 +4,7 @@ import Landing from "containers/Landing/Landing"
 
 import ROUTES from "constants/routes"
 
-function App() {
+const App = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
