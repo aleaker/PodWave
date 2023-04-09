@@ -8,6 +8,11 @@ import { isValidTimestamp } from "util/helpers"
 
 const { CancelToken } = axios
 
+/*
+This hook resolves the requested data. It is initialized with a presetId, wich is used to 
+resolve different flags and configurations especific to each view.
+ */
+
 const useDataResolver = id => {
 	const sourceRef = useRef(null)
 
@@ -17,6 +22,7 @@ const useDataResolver = id => {
 		data: null,
 	})
 
+	// Callback to cancel fetch requests if the component is unmounted
 	const cancelCb = msg => {
 		if (sourceRef) {
 			sourceRef.current.cancel(msg)
@@ -26,6 +32,8 @@ const useDataResolver = id => {
 
 	const { endpoint, parser } = PRESETS[id]
 
+	// Will fetch and parse the requested data according to the preset endpoint and parser function
+	// then it will store the parsed data in local storage and update the local state
 	const fetchAndStoreData = async storageKey => {
 		try {
 			const rawResponse = await axios({
@@ -54,6 +62,9 @@ const useDataResolver = id => {
 		}
 	}
 
+
+	// Will search for valid data in the local storage. If there is no data or if it is stale
+	// it will call fetchAndStoreData
 	const getData = storageKey => {
 		const storedData = JSON.parse(window.localStorage.getItem(storageKey))
 
