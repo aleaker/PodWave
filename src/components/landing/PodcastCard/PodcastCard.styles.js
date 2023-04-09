@@ -5,6 +5,7 @@ import DisplayCard from "components/general/DisplayCard/DisplayCard"
 import { battleshipGray, onyx } from "theme/colors"
 
 export const StyledDisplayCard = styled(DisplayCard)`
+	width: 240px;
 	margin-top: 80px;
 	padding-top: 80px;
 	justify-content: flex-start;
