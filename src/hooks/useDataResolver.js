@@ -62,7 +62,6 @@ const useDataResolver = id => {
 		}
 	}
 
-
 	// Will search for valid data in the local storage. If there is no data or if it is stale
 	// it will call fetchAndStoreData
 	const getData = storageKey => {
