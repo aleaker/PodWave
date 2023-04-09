@@ -29,7 +29,13 @@ const Landing = () => {
 
 	const renderCards = () => {
 		return filteredList.map(({ id, title, author, imgSrc }) => (
-			<PodcastCard key={id} title={title} author={author} imgSrc={imgSrc} href={`${ROUTES.PODCAST}/${id}`} />
+			<PodcastCard
+				key={id}
+				title={title}
+				author={author}
+				imgSrc={imgSrc}
+				href={id ? `${ROUTES.PODCAST}/${id}` : null}
+			/>
 		))
 	}
 
