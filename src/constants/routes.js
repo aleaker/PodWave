@@ -1,5 +1,5 @@
 export default {
 	LANDING: "/",
-	PODCAST: "/podcast/:podcastId",
-	EPISODE: "/episode/:episodeId",
+	PODCAST: "/podcast",
+	EPISODE: "/episode",
 }

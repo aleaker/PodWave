@@ -13,9 +13,12 @@ const App = () => {
 			<GeneralLayout>
 				<Routes>
 					<Route path={ROUTES.LANDING} element={<Landing />} />
-					<Route path={ROUTES.PODCAST} element={<Podcast />}>
+					<Route path={`${ROUTES.PODCAST}/:podcastId`} element={<Podcast />}>
 						<Route index element={<div>Podcast table</div>} />
-						<Route path={`${ROUTES.PODCAST}/${ROUTES.EPISODE}`} element={<div>Episode details</div>} />
+						<Route
+							path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`}
+							element={<div>Episode details</div>}
+						/>
 					</Route>
 				</Routes>
 			</GeneralLayout>
