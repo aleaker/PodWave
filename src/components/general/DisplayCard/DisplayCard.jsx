@@ -16,7 +16,7 @@ DisplayCard.defaultProps = {
 }
 
 DisplayCard.propTypes = {
-	children: PropTypes.element.isRequired,
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]).isRequired,
 	className: PropTypes.string,
 	href: PropTypes.string,
 }
