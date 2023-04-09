@@ -18,7 +18,7 @@ const Landing = () => {
 					const formatedSearch = searchValue.toLowerCase()
 					return title.toLowerCase().includes(formatedSearch) || author.toLowerCase().includes(formatedSearch)
 			  })
-			: []
+			: null
 	}, [data, searchValue])
 
 	const handleSearch = e => {
@@ -40,7 +40,7 @@ const Landing = () => {
 	return (
 		<LandingContainer>
 			<SearchContainer>
-				<SearchBar amount={filteredList.length} handleSearch={handleSearch} />
+				<SearchBar amount={filteredList?.length} handleSearch={handleSearch} />
 			</SearchContainer>
 			<CardsContainer>{filteredList && renderCards()}</CardsContainer>
 		</LandingContainer>
