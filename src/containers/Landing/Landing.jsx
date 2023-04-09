@@ -5,6 +5,8 @@ import PodcastCard from "components/landing/PodcastCard/PodcastCard"
 
 import useDataResolver from "hooks/useDataResolver"
 
+import ROUTES from "constants/routes"
+
 import { LandingContainer, SearchContainer, CardsContainer } from "./Landing.styles"
 
 const Landing = () => {
@@ -27,7 +29,13 @@ const Landing = () => {
 
 	const renderCards = () => {
 		return filteredList.map(({ id, title, author, imgSrc }) => (
-			<PodcastCard key={id} title={title} author={author} imgSrc={imgSrc} />
+			<PodcastCard
+				key={id}
+				title={title}
+				author={author}
+				imgSrc={imgSrc}
+				href={id ? `${ROUTES.PODCAST}/${id}` : null}
+			/>
 		))
 	}
 

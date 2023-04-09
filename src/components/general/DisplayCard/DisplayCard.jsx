@@ -1,10 +1,19 @@
 import PropTypes from "prop-types"
+import { useNavigate } from "react-router-dom"
 
 import { DisplayCardContainer } from "./DisplayCard.styles"
 
 const DisplayCard = ({ href, children, className }) => {
+	const navigate = useNavigate()
+
+	const handleClick = () => {
+		if (href) {
+			navigate(href)
+		}
+	}
+
 	return (
-		<DisplayCardContainer $isClickable={href} className={className}>
+		<DisplayCardContainer onClick={handleClick} $isClickable={href} className={className}>
 			{children}
 		</DisplayCardContainer>
 	)
