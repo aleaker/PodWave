@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 
 import PodcastDetails from "components/podcast/PodcastDetails/PodcastDetails"
 
-import { PodcastContainer } from "./Podcast.styles"
+import { PodcastContainer, OutletContainer } from "./Podcast.styles"
 
 const Podcast = () => {
 	return (
@@ -13,7 +13,9 @@ const Podcast = () => {
 				author="Author of podcast"
 				description="Podcast text description"
 			/>
-			<Outlet />
+			<OutletContainer>
+				<Outlet />
+			</OutletContainer>
 		</PodcastContainer>
 	)
 }
