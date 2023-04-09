@@ -2,9 +2,9 @@ import PropTypes from "prop-types"
 
 import { StyledDisplayCard, PodcastLogo, TextContainer, Title, AuthorData } from "./PodcastCard.styles"
 
-const PodcastCard = ({ title, author, imgSrc }) => {
+const PodcastCard = ({ title, author, imgSrc, href }) => {
 	return (
-		<StyledDisplayCard href="/">
+		<StyledDisplayCard href={href}>
 			<PodcastLogo src={imgSrc} alt="podcast logo" />
 			<TextContainer>
 				{title ? <Title> {title} </Title> : null}
@@ -15,12 +15,14 @@ const PodcastCard = ({ title, author, imgSrc }) => {
 }
 
 PodcastCard.defaultProps = {
+	href: "",
 	title: "",
 	author: "",
 	imgSrc: "",
 }
 
 PodcastCard.propTypes = {
+	href: PropTypes.string,
 	title: PropTypes.string,
 	author: PropTypes.string,
 	imgSrc: PropTypes.string,
