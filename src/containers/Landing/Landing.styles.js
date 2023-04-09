@@ -15,4 +15,5 @@ export const CardsContainer = styled.div`
 	justify-content: center;
 	flex-wrap: wrap;
 	gap: 50px 30px;
+	margin-top: 30px;
 `
