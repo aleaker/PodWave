@@ -1,27 +1,32 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 
 import SearchBar from "components/landing/SearchBar/SearchBar"
 import PodcastCard from "components/landing/PodcastCard/PodcastCard"
 
 import useDataResolver from "hooks/useDataResolver"
 
-import { debounce } from "util/helpers"
-
 import { LandingContainer, SearchContainer, CardsContainer } from "./Landing.styles"
 
 const Landing = () => {
-	const [, setSearchValue] = useState("")
+	const [searchValue, setSearchValue] = useState("")
 
 	const { data, getData } = useDataResolver("list")
 
-	const handleSearch = debounce(e => {
-		if (e.target.value) {
-			setSearchValue(e.target.value)
-		}
-	})
+	const filteredList = useMemo(() => {
+		return data
+			? data.list.filter(({ title, author }) => {
+					const formatedSearch = searchValue.toLowerCase()
+					return title.toLowerCase().includes(formatedSearch) || author.toLowerCase().includes(formatedSearch)
+			  })
+			: []
+	}, [data, searchValue])
+
+	const handleSearch = e => {
+		setSearchValue(e.target.value)
+	}
 
 	const renderCards = () => {
-		return data.list.map(({ id, title, author, imgSrc }) => (
+		return filteredList.map(({ id, title, author, imgSrc }) => (
 			<PodcastCard key={id} title={title} author={author} imgSrc={imgSrc} />
 		))
 	}
@@ -35,9 +40,9 @@ const Landing = () => {
 	return (
 		<LandingContainer>
 			<SearchContainer>
-				<SearchBar handleSearch={handleSearch} />
+				<SearchBar amount={filteredList.length} handleSearch={handleSearch} />
 			</SearchContainer>
-			<CardsContainer>{data && renderCards()}</CardsContainer>
+			<CardsContainer>{filteredList && renderCards()}</CardsContainer>
 		</LandingContainer>
 	)
 }
