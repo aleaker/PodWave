@@ -4,7 +4,7 @@ import Landing from "containers/Landing/Landing"
 
 import Podcast from "containers/Podcast/Podcast"
 import GeneralLayout from "components/layouts/GeneralLayout/GeneralLayout"
-import EpisodesTable from "components/podcast/EpisodesTable/EpisodesTable"
+import EpisodesDetails from "components/podcast/EpisodesDetails/EpisodesDetails"
 
 import ROUTES from "constants/routes"
 
@@ -15,7 +15,7 @@ const App = () => {
 				<Routes>
 					<Route path={ROUTES.LANDING} element={<Landing />} />
 					<Route path={`${ROUTES.PODCAST}/:podcastId`} element={<Podcast />}>
-						<Route index element={<EpisodesTable />} />
+						<Route index element={<EpisodesDetails />} />
 						<Route
 							path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`}
 							element={<div>Episode details</div>}
