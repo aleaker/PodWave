@@ -7,6 +7,7 @@ import { battleshipGray, onyx } from "theme/colors"
 export const StyledDisplayCard = styled(DisplayCard)`
 	padding: 10px;
 	flex: 1;
+	height: fit-content;
 `
 
 export const PodcastLogo = styled.img`
