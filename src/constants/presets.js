@@ -7,12 +7,12 @@ export default {
 		id: "list",
 		endpoint: ENDPOINTS.PODCASTS_LIST,
 		parser: podcastsListParser,
-		hasQueryParams: false,
+		paramsToReplace: null,
 	},
 	singlePodcast: {
 		id: "singlePodcast",
 		endpoint: ENDPOINTS.PODCAST_DETAILS,
 		parser: episodesListParser,
-		hasQueryParams: true,
+		paramsToReplace: "::podcastId::",
 	},
 }

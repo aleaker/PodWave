@@ -1,6 +1,9 @@
-import { Outlet } from "react-router-dom"
+import { useEffect } from "react"
+import { Outlet, useParams } from "react-router-dom"
 
 import PodcastDetails from "components/podcast/PodcastDetails/PodcastDetails"
+
+import useDataResolver from "hooks/useDataResolver"
 
 import { PodcastContainer, OutletContainer } from "./Podcast.styles"
 
@@ -15,6 +18,16 @@ const MOCK_LIST = [
 const MOCK_AMOUNT = "5"
 
 const Podcast = () => {
+	const { data, getData } = useDataResolver("singlePodcast")
+
+	const { podcastId } = useParams()
+
+	useEffect(() => {
+		if (!data) {
+			getData(podcastId)
+		}
+	}, [])
+
 	return (
 		<PodcastContainer>
 			<PodcastDetails
