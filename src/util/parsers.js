@@ -15,16 +15,16 @@ export const podcastsListParser = unparsedData => {
 
 export const episodesListParser = ({ resultCount, results }) => {
 	const episodesCount = resultCount
-	const list = results.map(({ episodeUrl, trackTimeMillis, releaseDate, description, trackName }) => {
+	const episodesList = results.map(({ episodeUrl, trackTimeMillis, releaseDate, description, trackName }) => {
 		return {
 			episodeUrl,
 			duration: moment.utc(trackTimeMillis).format("mm:ss"),
 			date: moment(releaseDate).format("DD/MM/YYYY"),
 			description,
-			name: trackName,
+			title: trackName,
 		}
 	})
 	const timestamp = new Date().getTime()
 
-	return { episodesCount, list, timestamp }
+	return { episodesCount, episodesList, timestamp }
 }

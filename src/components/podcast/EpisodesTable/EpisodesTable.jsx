@@ -4,7 +4,7 @@ import { StyledDisplayCard, StyledTable, EpisodeName } from "./EpisodesTable.sty
 
 const EpisodesTable = ({ episodesList }) => {
 	const renderRows = () => {
-		return episodesList.map(({ episodeId, title, date, duration }) => {
+		return episodesList?.map(({ episodeId, title, date, duration }) => {
 			return (
 				<tr key={episodeId}>
 					<td>

@@ -7,18 +7,9 @@ import useDataResolver from "hooks/useDataResolver"
 
 import { PodcastContainer, OutletContainer } from "./Podcast.styles"
 
-const MOCK_LIST = [
-	{ episodeId: "1", title: "asd", date: "2/6/9696", duration: "30" },
-	{ episodeId: "2", title: "asd", date: "2/6/9696", duration: "30" },
-	{ episodeId: "3", title: "asd", date: "2/6/9696", duration: "30" },
-	{ episodeId: "4", title: "asd", date: "2/6/9696", duration: "30" },
-	{ episodeId: "5", title: "asdasd", date: "2/6/9696", duration: "30" },
-]
-
-const MOCK_AMOUNT = "5"
-
 const Podcast = () => {
 	const { data, getData } = useDataResolver("singlePodcast")
+	const { episodesList, episodesCount } = data || {}
 
 	const { podcastId } = useParams()
 
@@ -37,7 +28,7 @@ const Podcast = () => {
 				description="Podcast text description"
 			/>
 			<OutletContainer>
-				<Outlet context={[MOCK_LIST, MOCK_AMOUNT]} />
+				<Outlet context={[episodesList, episodesCount]} />
 			</OutletContainer>
 		</PodcastContainer>
 	)
