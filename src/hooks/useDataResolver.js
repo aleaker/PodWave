@@ -41,8 +41,6 @@ const useDataResolver = id => {
 			const rawResponse = await axios({
 				url: resolvedEnpoint,
 				method: "POST",
-				data: null,
-				params: null,
 				cancelToken: sourceRef.current.token,
 			})
 

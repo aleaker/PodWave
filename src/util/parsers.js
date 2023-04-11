@@ -7,6 +7,7 @@ export const podcastsListParser = unparsedData => {
 			title: podcastData["im:name"].label.toUpperCase(),
 			author: podcastData["im:artist"].label,
 			imgSrc: podcastData["im:image"][2].label,
+			description: podcastData.summary.label,
 		}
 	})
 	const timestamp = new Date().getTime()
