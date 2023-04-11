@@ -30,14 +30,16 @@ const useDataResolver = id => {
 		}
 	}
 
-	const { endpoint, parser } = PRESETS[id]
+	const { endpoint, parser, paramsToReplace } = PRESETS[id]
 
 	// Will fetch and parse the requested data according to the preset endpoint and parser function
 	// then it will store the parsed data in local storage and update the local state
 	const fetchAndStoreData = async storageKey => {
 		try {
+			const resolvedEnpoint = paramsToReplace ? endpoint.replace(paramsToReplace, storageKey) : endpoint
+
 			const rawResponse = await axios({
-				url: endpoint,
+				url: resolvedEnpoint,
 				method: "POST",
 				data: null,
 				params: null,
