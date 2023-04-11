@@ -22,6 +22,8 @@ const Podcast = () => {
 
 	useEffect(() => {
 		if (!podcastData) {
+			// This is needed to get the podcast description, as the iTunes API does not provide it
+			// for a specific podcast ID lookup.
 			getPodcastData("podcasts")
 		}
 	}, [])
