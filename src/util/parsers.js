@@ -1,7 +1,7 @@
 import moment from "moment"
 
 export const podcastsListParser = unparsedData => {
-	const list = unparsedData.feed.entry.map(podcastData => {
+	const list = unparsedData?.feed?.entry?.map(podcastData => {
 		return {
 			id: podcastData.id.attributes["im:id"],
 			title: podcastData["im:name"].label.toUpperCase(),
@@ -15,15 +15,20 @@ export const podcastsListParser = unparsedData => {
 
 export const episodesListParser = ({ resultCount, results }) => {
 	const episodesCount = resultCount
-	const episodesList = results.map(({ episodeUrl, trackTimeMillis, releaseDate, description, trackName }) => {
-		return {
-			episodeUrl,
-			duration: moment.utc(trackTimeMillis).format("mm:ss"),
-			date: moment(releaseDate).format("DD/MM/YYYY"),
-			description,
-			title: trackName,
+
+	const [, ...episodesData] = results
+	const episodesList = episodesData?.map(
+		({ trackId, episodeUrl, trackTimeMillis, releaseDate, description, trackName }) => {
+			return {
+				episodeId: `${trackId}`,
+				episodeUrl,
+				duration: moment.utc(trackTimeMillis).format("mm:ss"),
+				date: moment(releaseDate).format("DD/MM/YYYY"),
+				description,
+				title: trackName,
+			}
 		}
-	})
+	)
 	const timestamp = new Date().getTime()
 
 	return { episodesCount, episodesList, timestamp }

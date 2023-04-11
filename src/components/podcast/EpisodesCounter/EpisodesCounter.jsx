@@ -15,7 +15,7 @@ EpisodesCounter.defaultProps = {
 }
 
 EpisodesCounter.propTypes = {
-	amount: PropTypes.string,
+	amount: PropTypes.number,
 }
 
 export default EpisodesCounter
