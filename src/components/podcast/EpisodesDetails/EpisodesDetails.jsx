@@ -12,7 +12,7 @@ const EpisodesDetails = () => {
 	PropTypes.checkPropTypes(
 		{
 			episodesList: PropTypes.arrayOf(PropTypes.shape({})),
-			amount: PropTypes.string,
+			amount: PropTypes.number,
 		},
 		{
 			episodesList,
