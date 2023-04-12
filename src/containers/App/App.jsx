@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter, Route, createRoutesFromElements } 
 
 import Landing from "containers/Landing/Landing"
 
-import Podcast from "containers/Podcast/Podcast"
+import Podcast, { podcastLoader } from "containers/Podcast/Podcast"
 import GeneralLayout from "components/layouts/GeneralLayout/GeneralLayout"
 import EpisodesDetails from "components/podcast/EpisodesDetails/EpisodesDetails"
 
@@ -12,7 +12,11 @@ const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route element={<GeneralLayout />}>
 			<Route path={ROUTES.LANDING} element={<Landing />} />
-			<Route path={`${ROUTES.PODCAST}/:podcastId`} element={<Podcast />}>
+			<Route
+				path={`${ROUTES.PODCAST}/:podcastId`}
+				element={<Podcast />}
+				loader={({ params }) => podcastLoader(params.podcastId)}
+			>
 				<Route index element={<EpisodesDetails />} />
 				<Route
 					path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`}
