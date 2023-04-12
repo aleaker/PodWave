@@ -1,11 +1,11 @@
-import PropTypes from "prop-types"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate, useLocation, useNavigation } from "react-router-dom"
 
 import ROUTES from "constants/routes"
 
 import { HeaderContainer, Title, Loader } from "./Header.styles"
 
-const Header = ({ loading }) => {
+const Header = () => {
+	const navigation = useNavigation()
 	const navigate = useNavigate()
 	const location = useLocation()
 
@@ -22,17 +22,9 @@ const Header = ({ loading }) => {
 			<Title $isClickable={!isLandingPath} onClick={handleClick}>
 				Podcaster
 			</Title>
-			{loading ? <Loader /> : null}
+			{navigation.state === "loading" ? <Loader /> : null}
 		</HeaderContainer>
 	)
-}
-
-Header.defaultProps = {
-	loading: false,
-}
-
-Header.propTypes = {
-	loading: PropTypes.bool,
 }
 
 export default Header
