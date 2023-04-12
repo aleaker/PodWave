@@ -38,7 +38,7 @@ const Podcast = () => {
 		<PodcastContainer>
 			<PodcastDetails imgSrc={imgSrc} title={title} author={author} description={description} />
 			<OutletContainer>
-				<Outlet context={[episodesData?.episodesList, episodesData?.episodesData]} />
+				<Outlet context={[episodesData?.episodesList, episodesData?.episodesCount]} />
 			</OutletContainer>
 		</PodcastContainer>
 	)
