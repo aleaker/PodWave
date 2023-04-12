@@ -14,6 +14,7 @@ export const Title = styled.span`
 	color: ${blue};
 	font-weight: bold;
 	font-size: 20px;
+	${({ $isClickable }) => ($isClickable ? "cursor: pointer;" : "user-select: none;")}
 `
 
 const LoaderAnimation = keyframes`
