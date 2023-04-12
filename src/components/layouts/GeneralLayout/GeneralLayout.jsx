@@ -1,20 +1,16 @@
-import PropTypes from "prop-types"
+import { Outlet } from "react-router-dom"
 
 import Header from "components/layouts/Header/Header"
 
 import { LayoutContainer } from "./GeneralLayout.styles"
 
-const GeneralLayout = ({ children }) => {
+const GeneralLayout = () => {
 	return (
 		<LayoutContainer>
 			<Header />
-			{children}
+			<Outlet />
 		</LayoutContainer>
 	)
-}
-
-GeneralLayout.propTypes = {
-	children: PropTypes.element.isRequired,
 }
 
 export default GeneralLayout
