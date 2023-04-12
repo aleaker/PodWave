@@ -18,6 +18,7 @@ export const episodesListParser = ({ resultCount, results }) => {
 	const episodesCount = resultCount
 
 	const [, ...episodesData] = results
+
 	const episodesList = episodesData?.map(
 		({ trackId, episodeUrl, trackTimeMillis, releaseDate, description, trackName }) => {
 			return {
