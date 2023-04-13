@@ -5,6 +5,7 @@ import Landing, { landingLoader } from "containers/Landing/Landing"
 import Podcast, { podcastLoader } from "containers/Podcast/Podcast"
 import GeneralLayout from "components/layouts/GeneralLayout/GeneralLayout"
 import EpisodesDetails from "components/podcast/EpisodesDetails/EpisodesDetails"
+import EpisodePlayer from "components/podcast/EpisodePlayer/EpisodePlayer"
 
 import ROUTES from "constants/routes"
 
@@ -18,10 +19,7 @@ const router = createBrowserRouter(
 				loader={({ params }) => podcastLoader(params.podcastId)}
 			>
 				<Route index element={<EpisodesDetails />} />
-				<Route
-					path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`}
-					element={<div>Episode details</div>}
-				/>
+				<Route path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`} element={<EpisodePlayer />} />
 			</Route>
 		</Route>
 	)
