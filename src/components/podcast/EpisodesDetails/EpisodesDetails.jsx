@@ -6,19 +6,21 @@ import EpisodesTable from "./EpisodesTable/EpisodesTable"
 
 import { EpisodesDetailsContainer } from "./EpisodesDetails.styles"
 
+const contextPropTypes = {
+	episodesList: PropTypes.arrayOf(PropTypes.shape({})),
+	amount: PropTypes.number,
+}
+
 const EpisodesDetails = () => {
 	const [episodesList = null, amount = null] = useOutletContext()
 
 	PropTypes.checkPropTypes(
-		{
-			episodesList: PropTypes.arrayOf(PropTypes.shape({})),
-			amount: PropTypes.number,
-		},
+		contextPropTypes,
 		{
 			episodesList,
 			amount,
 		},
-		"EpisodesDetailsContext",
+		"context types",
 		"EpisodesDetails"
 	)
 
