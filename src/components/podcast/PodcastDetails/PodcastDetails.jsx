@@ -1,14 +1,8 @@
 import PropTypes from "prop-types"
 
-import {
-	StyledDisplayCard,
-	PodcastLogo,
-	TextContainer,
-	Title,
-	Author,
-	StyledText,
-	Description,
-} from "./PodcastDetails.styles"
+import { Description } from "components/podcast/podcast.styles"
+
+import { StyledDisplayCard, PodcastLogo, TextContainer, Title, Author, StyledText } from "./PodcastDetails.styles"
 
 const PodcastDetails = ({ imgSrc, title, author, description }) => {
 	return (
