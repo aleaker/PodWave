@@ -12,7 +12,6 @@ const EpisodesTable = ({ episodesList }) => {
 	const currentPath = location.pathname
 	const handleClick = episodeId => {
 		if (episodeId) {
-			console.log(currentPath)
 			navigate(`${currentPath}${ROUTES.EPISODE}/${episodeId}`)
 		}
 	}
