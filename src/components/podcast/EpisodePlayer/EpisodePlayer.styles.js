@@ -9,12 +9,14 @@ export const StyledDisplayCard = styled(DisplayCard)`
 	height: fit-content;
 `
 
-export const StyledAudio = styled.audio``
+export const StyledAudio = styled.audio`
+	width: auto;
+`
 
 export const Title = styled.span`
 	color: ${onyx};
 	font-weight: bold;
-	font-size: 25px;
+	font-size: 35px;
 	margin-top: auto;
 `
 

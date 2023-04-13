@@ -1,4 +1,6 @@
-import { StyledDisplayCard, Title, Description, StyledAudio } from "./EpisodePlayer.styles"
+import { Description } from "components/podcast/podcast.styles"
+
+import { StyledDisplayCard, Title, StyledAudio } from "./EpisodePlayer.styles"
 
 const EpisodePlayer = () => {
 	const renderPlayer = () => {
