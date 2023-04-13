@@ -1,16 +1,16 @@
-import { useEffect, useMemo } from "react"
-import { Outlet, useParams } from "react-router-dom"
+import { useMemo } from "react"
+import { Outlet, useParams, useLoaderData } from "react-router-dom"
 
 import PodcastDetails from "components/podcast/PodcastDetails/PodcastDetails"
 
-import useDataResolver from "hooks/useDataResolver"
+import PRESETS from "constants/presets"
+
+import { getData } from "util/helpers"
 
 import { PodcastContainer, OutletContainer } from "./Podcast.styles"
 
 const Podcast = () => {
-	const { data: podcastData, getData: getPodcastData } = useDataResolver("list")
-
-	const { data: episodesData, getData: getEpisodesData } = useDataResolver("singlePodcast")
+	const { podcastData, episodesCount, episodesList } = useLoaderData()
 
 	const { podcastId } = useParams()
 
@@ -20,28 +20,20 @@ const Podcast = () => {
 		return list ? list.find(podcast => podcast.id === podcastId) : {}
 	}, [podcastData])
 
-	useEffect(() => {
-		if (!podcastData) {
-			// This is needed to get the podcast description, as the iTunes API does not provide it
-			// for a specific podcast ID lookup.
-			getPodcastData("podcasts")
-		}
-	}, [])
-
-	useEffect(() => {
-		if (!episodesData) {
-			getEpisodesData(podcastId)
-		}
-	}, [])
-
 	return (
 		<PodcastContainer>
 			<PodcastDetails imgSrc={imgSrc} title={title} author={author} description={description} />
 			<OutletContainer>
-				<Outlet context={[episodesData?.episodesList, episodesData?.episodesCount]} />
+				<Outlet context={[episodesList, episodesCount]} />
 			</OutletContainer>
 		</PodcastContainer>
 	)
 }
 
 export default Podcast
+
+export const podcastLoader = async storageKey => {
+	const podcastData = await getData("podcasts", PRESETS.list)
+	const { episodesList, episodesCount } = await getData(storageKey, PRESETS.singlePodcast)
+	return { podcastData, episodesList, episodesCount }
+}
