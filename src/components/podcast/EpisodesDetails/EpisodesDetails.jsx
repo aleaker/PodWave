@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 import { useOutletContext } from "react-router-dom"
 
-import EpisodesCounter from "components/podcast/EpisodesCounter/EpisodesCounter"
-import EpisodesTable from "components/podcast/EpisodesTable/EpisodesTable"
+import EpisodesCounter from "./EpisodesCounter/EpisodesCounter"
+import EpisodesTable from "./EpisodesTable/EpisodesTable"
 
 import { EpisodesDetailsContainer } from "./EpisodesDetails.styles"
 

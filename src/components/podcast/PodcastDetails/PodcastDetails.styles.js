@@ -1,6 +1,8 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 import DisplayCard from "components/general/DisplayCard/DisplayCard"
+
+import { baseTextStyles } from "components/podcast/podcast.styles"
 
 import { battleshipGray, onyx } from "theme/colors"
 
@@ -23,11 +25,6 @@ export const TextContainer = styled.div`
 	border-top: 1px solid ${battleshipGray};
 `
 
-const baseTextStyles = css`
-	color: ${battleshipGray};
-	font-style: italic;
-`
-
 export const Title = styled.span`
 	color: ${onyx};
 	font-weight: bold;
@@ -40,8 +37,4 @@ export const Author = styled.span`
 export const StyledText = styled.span`
 	color: ${onyx};
 	font-weight: 500;
-`
-
-export const Description = styled.p`
-	${baseTextStyles}
 `
