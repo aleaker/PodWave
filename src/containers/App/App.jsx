@@ -1,8 +1,9 @@
 import { RouterProvider, createBrowserRouter, Route, createRoutesFromElements } from "react-router-dom"
 
 import Landing, { landingLoader } from "containers/Landing/Landing"
-
 import Podcast, { podcastLoader } from "containers/Podcast/Podcast"
+
+import NotFound from "components/general/NotFound/NotFound"
 import GeneralLayout from "components/layouts/GeneralLayout/GeneralLayout"
 import EpisodesDetails from "components/podcast/EpisodesDetails/EpisodesDetails"
 import EpisodePlayer from "components/podcast/EpisodePlayer/EpisodePlayer"
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
 				<Route index element={<EpisodesDetails />} />
 				<Route path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`} element={<EpisodePlayer />} />
 			</Route>
+			<Route path="*" element={<NotFound />} />
 		</Route>
 	)
 )
