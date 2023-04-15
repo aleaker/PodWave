@@ -1,15 +1,33 @@
 import PropTypes from "prop-types"
+import { useParams } from "react-router-dom"
+
+import TextLink from "components/general/TextLink/TextLink"
+
+import ROUTES from "constants/routes"
 
 import { Description } from "components/podcast/podcast.styles"
 
-import { StyledDisplayCard, PodcastLogo, TextContainer, Title, Author, StyledText } from "./PodcastDetails.styles"
+import {
+	StyledDisplayCard,
+	StyledLogoLink,
+	PodcastLogo,
+	TextContainer,
+	Title,
+	Author,
+	StyledText,
+} from "./PodcastDetails.styles"
 
 const PodcastDetails = ({ imgSrc, title, author, description }) => {
+	const { podcastId } = useParams()
 	return (
 		<StyledDisplayCard>
-			<PodcastLogo src={imgSrc} alt="podcast logo" />
+			<StyledLogoLink to={`${ROUTES.PODCAST}/${podcastId}`}>
+				<PodcastLogo src={imgSrc} alt="podcast logo" />
+			</StyledLogoLink>
 			<TextContainer>
-				<Title>{title}</Title>
+				<TextLink to={`${ROUTES.PODCAST}/${podcastId}`}>
+					<Title>{title}</Title>
+				</TextLink>
 				{author ? <Author>by {author}</Author> : null}
 			</TextContainer>
 			<TextContainer>
