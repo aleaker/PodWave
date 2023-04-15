@@ -1,27 +1,24 @@
 import PropTypes from "prop-types"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+
+import TextLink from "components/general/TextLink/TextLink"
 
 import ROUTES from "constants/routes"
 
 import { StyledDisplayCard, StyledTable, EpisodeName } from "./EpisodesTable.styles"
 
 const EpisodesTable = ({ episodesList }) => {
-	const navigate = useNavigate()
 	const location = useLocation()
-
 	const currentPath = location.pathname
-	const handleClick = episodeId => {
-		if (episodeId) {
-			navigate(`${currentPath}${ROUTES.EPISODE}/${episodeId}`)
-		}
-	}
 
 	const renderRows = () => {
 		return episodesList?.map(({ episodeId, title, date, duration }) => {
 			return (
 				<tr key={episodeId}>
 					<td>
-						<EpisodeName onClick={() => handleClick(episodeId)}>{title}</EpisodeName>
+						<TextLink to={`${currentPath}${ROUTES.EPISODE}/${episodeId}`}>
+							<EpisodeName>{title}</EpisodeName>
+						</TextLink>
 					</td>
 					<td>{date}</td>
 					<td>{duration}</td>
