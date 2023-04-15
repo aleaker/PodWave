@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+import { Link as ReactRouterLink } from "react-router-dom"
 import DisplayCard from "components/general/DisplayCard/DisplayCard"
 
 import { baseTextStyles } from "components/podcast/podcast.styles"
@@ -12,10 +13,13 @@ export const StyledDisplayCard = styled(DisplayCard)`
 	height: fit-content;
 `
 
-export const PodcastLogo = styled.img`
-	margin: auto;
+export const StyledLogoLink = styled(ReactRouterLink)`
 	width: 70%;
-	margin-bottom: 20px;
+	margin: auto auto 20px;
+`
+
+export const PodcastLogo = styled.img`
+	width: 100%;
 `
 
 export const TextContainer = styled.div`
