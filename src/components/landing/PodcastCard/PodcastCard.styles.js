@@ -1,8 +1,14 @@
 import styled, { css } from "styled-components"
+import { Link } from "react-router-dom"
 
 import DisplayCard from "components/general/DisplayCard/DisplayCard"
 
 import { battleshipGray, onyx } from "theme/colors"
+
+export const StyledCardLink = styled(Link)`
+	text-decoration: none;
+	display: flex;
+`
 
 export const StyledDisplayCard = styled(DisplayCard)`
 	width: 240px;
