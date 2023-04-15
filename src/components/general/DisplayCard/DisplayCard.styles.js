@@ -11,5 +11,4 @@ export const DisplayCardContainer = styled.div`
 	min-height: 120px;
 	width: 200px;
 	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
-	${({ $isClickable }) => ($isClickable ? "cursor: pointer;" : null)}
 `
