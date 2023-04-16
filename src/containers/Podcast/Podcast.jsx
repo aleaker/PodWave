@@ -12,7 +12,7 @@ import { PodcastContainer, OutletContainer } from "./Podcast.styles"
 const Podcast = () => {
 	const { podcastData, episodesCount, episodesList } = useLoaderData()
 
-	const { podcastId } = useParams()
+	const { podcastId, episodeId } = useParams()
 
 	const { imgSrc, title, author, description } = useMemo(() => {
 		const { list } = podcastData || {}
@@ -20,11 +20,17 @@ const Podcast = () => {
 		return list ? list.find(podcast => podcast.id === podcastId) : {}
 	}, [podcastData])
 
+	const selectedEpisode = useMemo(() => {
+		return episodesList ? episodesList.find(episode => episode.episodeId === episodeId) : {}
+	}, [episodeId, episodesList])
+
+	const resolveContextData = () => selectedEpisode || [episodesList, episodesCount]
+
 	return (
 		<PodcastContainer>
 			<PodcastDetails imgSrc={imgSrc} title={title} author={author} description={description} />
 			<OutletContainer>
-				<Outlet context={[episodesList, episodesCount]} />
+				<Outlet context={resolveContextData()} />
 			</OutletContainer>
 		</PodcastContainer>
 	)

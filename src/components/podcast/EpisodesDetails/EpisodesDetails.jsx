@@ -1,24 +1,26 @@
 import PropTypes from "prop-types"
 import { useOutletContext } from "react-router-dom"
 
-import EpisodesCounter from "components/podcast/EpisodesCounter/EpisodesCounter"
-import EpisodesTable from "components/podcast/EpisodesTable/EpisodesTable"
+import EpisodesCounter from "./EpisodesCounter/EpisodesCounter"
+import EpisodesTable from "./EpisodesTable/EpisodesTable"
 
 import { EpisodesDetailsContainer } from "./EpisodesDetails.styles"
+
+const contextPropTypes = {
+	episodesList: PropTypes.arrayOf(PropTypes.shape({})),
+	amount: PropTypes.number,
+}
 
 const EpisodesDetails = () => {
 	const [episodesList = null, amount = null] = useOutletContext()
 
 	PropTypes.checkPropTypes(
-		{
-			episodesList: PropTypes.arrayOf(PropTypes.shape({})),
-			amount: PropTypes.number,
-		},
+		contextPropTypes,
 		{
 			episodesList,
 			amount,
 		},
-		"EpisodesDetailsContext",
+		"context types",
 		"EpisodesDetails"
 	)
 
