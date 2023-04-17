@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter, Route, createRoutesFromElements } from "react-router-dom"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
 
 import Landing, { landingLoader } from "containers/Landing/Landing"
 import Podcast, { podcastLoader } from "containers/Podcast/Podcast"
@@ -10,22 +10,32 @@ import EpisodePlayer from "components/podcast/EpisodePlayer/EpisodePlayer"
 
 import ROUTES from "constants/routes"
 
-const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route element={<GeneralLayout />}>
-			<Route path={ROUTES.LANDING} element={<Landing />} loader={landingLoader} />
-			<Route
-				path={`${ROUTES.PODCAST}/:podcastId`}
-				element={<Podcast />}
-				loader={({ params }) => podcastLoader(params.podcastId)}
-			>
-				<Route index element={<EpisodesDetails />} />
-				<Route path={`${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`} element={<EpisodePlayer />} />
-			</Route>
-			<Route path="*" element={<NotFound />} />
-		</Route>
-	)
-)
+export const routesConfig = [
+	{
+		id: "layout",
+		element: <GeneralLayout />,
+		children: [
+			{ id: "landing", path: ROUTES.LANDING, element: <Landing />, loader: landingLoader },
+			{
+				id: "podcast",
+				path: `${ROUTES.PODCAST}/:podcastId`,
+				element: <Podcast />,
+				loader: ({ params }) => podcastLoader(params.podcastId),
+				children: [
+					{ id: "episodes-details", index: true, element: <EpisodesDetails /> },
+					{
+						id: "episode-player",
+						path: `${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`,
+						element: <EpisodePlayer />,
+					},
+				],
+			},
+			{ id: "not-found", path: "*", element: <NotFound /> },
+		],
+	},
+]
+
+const router = createBrowserRouter(routesConfig)
 
 const App = () => {
 	return <RouterProvider router={router} />
