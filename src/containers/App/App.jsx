@@ -15,18 +15,20 @@ export const routesConfig = [
 		id: "layout",
 		element: <GeneralLayout />,
 		children: [
-			{ id: "landing", path: ROUTES.LANDING, element: <Landing />, loader: landingLoader },
+			{ id: "landing", path: ROUTES.LANDING, element: <Landing />, loader: landingLoader, errorElement: <NotFound /> },
 			{
 				id: "podcast",
 				path: `${ROUTES.PODCAST}/:podcastId`,
 				element: <Podcast />,
 				loader: ({ params }) => podcastLoader(params.podcastId),
+				errorElement: <NotFound />,
 				children: [
 					{ id: "episodes-details", index: true, element: <EpisodesDetails /> },
 					{
 						id: "episode-player",
 						path: `${ROUTES.PODCAST}/:podcastId/${ROUTES.EPISODE}/:episodeId`,
 						element: <EpisodePlayer />,
+						errorElement: <NotFound />,
 					},
 				],
 			},

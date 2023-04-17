@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import { useOutletContext } from "react-router-dom"
 import DOMPurify from "dompurify"
 
+import NotFound from "components/general/NotFound/NotFound"
 import { Description } from "components/podcast/podcast.styles"
 
 import { StyledDisplayCard, Title, StyledAudio } from "./EpisodePlayer.styles"
@@ -30,7 +31,7 @@ const EpisodePlayer = () => {
 		<StyledDisplayCard>
 			<Title>{title}</Title>
 			<Description dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
-			{episodeUrl ? renderPlayer() : "Loading..."}
+			{episodeUrl ? renderPlayer() : <NotFound />}
 		</StyledDisplayCard>
 	)
 }
