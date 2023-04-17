@@ -15,8 +15,8 @@ export const podcastsListParser = unparsedData => {
 }
 
 export const episodesListParser = ({ resultCount, results }) => {
-	const episodesCount = resultCount
-
+	// cleaning up results, the first element is not a track/episode
+	const episodesCount = resultCount - 1
 	const [, ...episodesData] = results
 
 	const episodesList = episodesData?.map(
