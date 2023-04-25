@@ -3,9 +3,8 @@ import userEvent from "@testing-library/user-event"
 import { act, screen } from "@testing-library/react"
 
 import ROUTES from "constants/routes"
-import { PODCASTS_LIST_MOCKUP } from "constants/tests"
 
-import { renderWithRouter, modifyRouteAttribute } from "util/tests"
+import { renderWithRouter } from "util/tests"
 import { routesConfig } from "./App"
 
 test("app renders Landing page", async () => {
@@ -26,10 +25,9 @@ test("using inexistent route renders 404 page", () => {
 })
 
 test("user clicking on a podcast link renders podcast page", async () => {
-	const routesConfigWithMockedData = modifyRouteAttribute(routesConfig, "landing", "loader", () => PODCASTS_LIST_MOCKUP)
 
 	const user = userEvent.setup()
-	renderWithRouter(routesConfigWithMockedData)
+	renderWithRouter(routesConfig, ROUTES.LANDING)
 
 	const pocastLink = await screen.findByRole("link", {
 		name: /podcast logo the joe budden podcast author: the joe budden network/i,
@@ -44,11 +42,8 @@ test("user clicking on a podcast link renders podcast page", async () => {
 })
 
 test("user typing in the search bar filters the podcasts list", async () => {
-	const routesConfigWithMockedData = modifyRouteAttribute(routesConfig, "landing", "loader", () => PODCASTS_LIST_MOCKUP)
-
 	const user = userEvent.setup()
-	renderWithRouter(routesConfigWithMockedData)
-
+	renderWithRouter(routesConfig, ROUTES.LANDING)
 	const searchBar = await screen.findByRole("textbox")
 
 	await act(() => user.type(searchBar, "little light"))
