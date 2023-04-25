@@ -28,24 +28,22 @@ const Landing = () => {
 		setSearchValue(e.target.value)
 	}
 
-	const renderCards = () => {
-		return filteredList.map(({ id, title, author, imgSrc }) => (
-			<PodcastCard
-				key={id}
-				title={title}
-				author={author}
-				imgSrc={imgSrc}
-				href={id ? `${ROUTES.PODCAST}/${id}` : null}
-			/>
-		))
-	}
-
 	return (
 		<LandingContainer>
 			<SearchContainer>
 				<SearchBar amount={filteredList?.length} handleSearch={handleSearch} />
 			</SearchContainer>
-			<CardsContainer>{filteredList && renderCards()}</CardsContainer>
+			<CardsContainer>
+				{filteredList?.map(({ id, title, author, imgSrc }) => (
+					<PodcastCard
+						key={id}
+						title={title}
+						author={author}
+						imgSrc={imgSrc}
+						href={id ? `${ROUTES.PODCAST}/${id}` : null}
+					/>
+				))}
+			</CardsContainer>
 		</LandingContainer>
 	)
 }

@@ -78,6 +78,5 @@
                 ]
             }
         }
-    },
-    "ignorePatterns": ["src/constants/tests.js"]
+    }
 }
