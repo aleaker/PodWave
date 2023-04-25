@@ -1,51 +1,94 @@
-# Getting Started with Create React App
+# PodWave
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This README file describes the architecture, structure, test coverage, how to download, run the project in development mode, and build and run the project in production mode.
 
-## How to run the App
+### Table of ContentsTable of Contents
 
-Clone this repository and install the required dependencies:
+1. [architecture](#architecture)
+2. [structure](#structure)
+3. [test coverage](#test-coverage)
+4. [downloading the project](#downloading-the-project)
+5. [running the project in development mode](#running-the-project-in-development-mode)
+6. [building and running the project in production mode](#building-and-running-the-in-production-mode)
+
+## Architecture
+
+This React project follows a modular architecture based on components, which promotes code reusability and maintainability. The main components are organized as follows:
+
+**UI Components**: These are the reusable components that represent the visual elements of the application.
+**Containers:** These components are responsible for managing the application state and connecting the UI components to the business logic.
+
+#### Structure
+The components folder contains subfolders to organize the components of each view. Within each component folder we can find a jsx file and a styles file.
+The containers folder contains each page container with the respective test.js file.
+The project structure is organized as follows:
+```json
+├── public
+│   ├── index.html
+│   └── favicon.ico
+├── src
+│   ├── components
+│   │   ├── general
+│   │   │   ├── DisplayCard
+│   │   │   │   ├── DisplayCard.jsx
+│   │   │   │   ├── DisplayCard.styles.js
+│   │   ├── landing
+│   │   ├── layouts
+│   │   └── podcast
+│   ├── containers
+│   │   ├── App
+│   │   │   ├── App.jsx
+│   │   │   ├── App.test.js
+│   │   ├── Landing
+│   │   └── Podcast
+│   ├── constants
+│   ├── util
+│   ├── mocks
+│   ├── theme
+│   ├── index.js
+├── .gitignore
+├── setupTests.js
+├── README.dm
+├── .eslintrc.json
+├── package.json
+└── package-lock.json
+```
+
+## Test Coverage
+This project uses Jest, Mock Service Worker and React Testing Library for testing. Test files are located inside the corresponding containers folders. Test coverage is set up to cover most critical parts of the application with integration tests.
+
+Run the tests with the following command:
+`npm run test`
+
+## Downloading the Project
+
+To download the project locally, follow these steps:
+
+1. Clone the repository:
+`git clone https://github.com/aleaker/PodWave.git`
+2. Change into the project directory:
+`cd PodWave`
+3. Install the required dependencies:
 `npm install`
 
-development mode:
-- Run the app in development mode:
+## Running the Project in Development Mode
+
+To run the project in development mode:
 `npm start`
 
-production mode:
-- Create an optimized production build:
-  `npm run build`
-- Install and run serve to serve the app with a static server:
-  `npm install -g serve && serve -s build`
+Now, the application should be running on http://localhost:3000.
 
-## Releases
-Follow every relevant step of the proyect in each release
+## Building and Running the Project in Production Mode
 
-https://github.com/aleaker/podcaster/releases
+To build the project for production, run the following command:
+`npm run build`
 
-## Available Scripts
+This command generates an optimized production build of the application in the build directory.
 
-In the project directory, you can run:
+To serve the production build locally, you can use a package like serve. Install it globally:
+`npm install -g serve`
 
-### `npm start`
+Then, serve the production build:
+`serve -s build`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
+Now, the application should be running on http://localhost:5000 or another available port.
