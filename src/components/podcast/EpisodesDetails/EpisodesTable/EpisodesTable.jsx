@@ -11,22 +11,6 @@ const EpisodesTable = ({ episodesList }) => {
 	const location = useLocation()
 	const currentPath = location.pathname
 
-	const renderRows = () => {
-		return episodesList?.map(({ episodeId, title, date, duration }) => {
-			return (
-				<tr key={episodeId}>
-					<td>
-						<TextLink to={`${currentPath}${ROUTES.EPISODE}/${episodeId}`}>
-							<EpisodeName>{title}</EpisodeName>
-						</TextLink>
-					</td>
-					<td>{date}</td>
-					<td>{duration}</td>
-				</tr>
-			)
-		})
-	}
-
 	return (
 		<StyledDisplayCard>
 			<StyledTable>
@@ -37,7 +21,21 @@ const EpisodesTable = ({ episodesList }) => {
 						<th>Duration</th>
 					</tr>
 				</thead>
-				<tbody>{renderRows()}</tbody>
+				<tbody>
+					{episodesList?.map(({ episodeId, title, date, duration }) => {
+						return (
+							<tr key={episodeId}>
+								<td>
+									<TextLink to={`${currentPath}${ROUTES.EPISODE}/${episodeId}`}>
+										<EpisodeName>{title}</EpisodeName>
+									</TextLink>
+								</td>
+								<td>{date}</td>
+								<td>{duration}</td>
+							</tr>
+						)
+					})}
+				</tbody>
 			</StyledTable>
 		</StyledDisplayCard>
 	)
