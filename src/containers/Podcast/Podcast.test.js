@@ -3,22 +3,14 @@ import userEvent from "@testing-library/user-event"
 import { act, screen } from "@testing-library/react"
 
 import ROUTES from "constants/routes"
-import { SINGLE_PODCAST_MOCKUP } from "constants/tests"
 
-import { renderWithRouter, modifyRouteAttribute } from "util/tests"
+import { renderWithRouter } from "util/tests"
 import { routesConfig } from "containers/App/App"
 
 test("navigating to a valid podcast page renders podcast page", async () => {
-	const routesConfigWithMockedData = modifyRouteAttribute(
-		routesConfig,
-		"podcast",
-		"loader",
-		() => SINGLE_PODCAST_MOCKUP
-	)
+	renderWithRouter(routesConfig, `${ROUTES.PODCAST}/1535809341`)
 
-	renderWithRouter(routesConfigWithMockedData, `${ROUTES.PODCAST}/1096830182`)
-
-	const link = await screen.findByRole("cell", { name: /episode 358 w\/ marlon wayans/i })
+	const link = await screen.findByRole('cell', {  name: /episode 617 \| “ribbit”/i})
 	// verify correct episode link is in the table
 	expect(link).toBeInTheDocument()
 
@@ -29,34 +21,20 @@ test("navigating to a valid podcast page renders podcast page", async () => {
 test("clicking on an episode link renders the correct episode details", async () => {
 	const user = userEvent.setup()
 
-	const routesConfigWithMockedData = modifyRouteAttribute(
-		routesConfig,
-		"podcast",
-		"loader",
-		() => SINGLE_PODCAST_MOCKUP
-	)
+	renderWithRouter(routesConfig, `${ROUTES.PODCAST}/1535809341`)
 
-	renderWithRouter(routesConfigWithMockedData, `${ROUTES.PODCAST}/1096830182`)
-
-	const link = await screen.findByText(/episode 340 w\/ bobby shmurda/i)
+	const link = await screen.findByText(/episode 620 \| "who said\?"/i)
 	await act(() => user.click(link))
 
 	// verify that the correct description is rendered in the EpisodePlayer
-	const description = await screen.findByText(
-		/n\.o\.r\.e\. & dj efn are the drink champs\. in this episode we chop it up with the one and only bobby shmurda! bobby joins us and shares his journey in music\. with its highs and lows, bobby shares stories about his career, serving time in prison, making hit records and much much more! lots of great stories that you don’t want to miss!! make some noise!!! 💐💐💐🏆🏆🏆 \*subscribe to patreon now for exclusive content, discount codes, m&g’s \+ more: 🏆\* https:\/\/www\.patreon\.com\/drinkchamps \*listen and subscribe at https:\/\/www\.drinkchamps\.com follow drink champs: https:\/\/www\.instagram\.com\/drinkchamps https:\/\/www\.twitter\.com\/drinkchamps https:\/\/www\.facebook\.com\/drinkchamps https:\/\/www\.youtube\.com\/drinkchamps dj efn https:\/\/www\.crazyhood\.com https:\/\/www\.instagram\.com\/whoscrazy https:\/\/www\.twitter\.com\/djefn https:\/\/www\.facebook\.com\/crazyhoodproductions n\.o\.r\.e\. https:\/\/www\.instagram\.com\/therealnoreaga https:\/\/www\.twitter\.com\/noreaga \*check out our culture cards nft project by joining the culture cards discord: 👇\* https:\/\/discord\.gg\/theculturecards see omnystudio\.com\/listener for privacy information\./i
-	)
+	const description = await screen.findByText(  /the gang records their first episode without joe as they begin with the latest news on jonathan majors as additional abuse allegations come to light \(12:47\) and tiffany haddish attempts to defend him \(25:57\)\. desiigner seeks mental health treatment after exposing himself on an airplane \(36:55\), frank ocean pulls out of weekend 2 of coachella due to an injury \(1:00:33\), and \*spoiler alert\* snowfall series finale recap \(1:05:00\)\. also, the jbp gives their thoughts on the chance the rapper dancing video \(1:29:01\), eagles qb jalen hurts pens a love letter to black women \(1:40:06\), \+ more! become a patron of the joe budden podcast for additional bonus episodes and visual content for all things jbp\.: tap in here www\.patreon\.com\/joebudden sleeper picks: ice \| lloyd banks \- “cliffhanger” melyssa \| samtrax \(feat\. amber oliver\) \- “you are” parks \| your old droog & madlib \- “pronouns” ish \| yung bleu & chris brown \- “distant lover”/i  )
 	expect(description).toBeInTheDocument()
 })
 
 test("navigating to a valid episode page renders episode player", async () => {
-	const routesConfigWithMockedData = modifyRouteAttribute(
-		routesConfig,
-		"podcast",
-		"loader",
-		() => SINGLE_PODCAST_MOCKUP
-	)
 
-	renderWithRouter(routesConfigWithMockedData, `${ROUTES.PODCAST}/1096830182${ROUTES.EPISODE}/1000607824407`)
+	renderWithRouter(routesConfig, `${ROUTES.PODCAST}/1535809341${ROUTES.EPISODE}/1000610181965`)
 	// verify correct episode title is rendered
-	expect(await screen.findByText(/episode 358 w\/ marlon wayans/i)).toBeInTheDocument()
+
+	expect(await screen.findByText(/episode 620 \| "who said\?"/i)).toBeInTheDocument()
 })
