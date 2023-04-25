@@ -6,22 +6,20 @@ import ROUTES from "constants/routes"
 
 import { Title } from "./HeaderTitle.styles"
 
-
 const HeaderTitle = () => {
+	const location = useLocation()
 
-    const location = useLocation()
+	const isLandingPath = location.pathname === ROUTES.LANDING
 
-    const isLandingPath = location.pathname === ROUTES.LANDING
+	if (!isLandingPath) {
+		return (
+			<TextLink to={ROUTES.LANDING}>
+				<Title>Podcaster</Title>
+			</TextLink>
+		)
+	}
 
-    if (!isLandingPath) {
-        return (
-            <TextLink to={ROUTES.LANDING}>
-                <Title>Podcaster</Title>
-            </TextLink>
-        )
-    }
-
-    return <Title>Podcaster</Title>
+	return <Title>Podcaster</Title>
 }
 
 export default HeaderTitle

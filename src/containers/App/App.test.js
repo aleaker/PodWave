@@ -25,7 +25,6 @@ test("using inexistent route renders 404 page", () => {
 })
 
 test("user clicking on a podcast link renders podcast page", async () => {
-
 	const user = userEvent.setup()
 	renderWithRouter(routesConfig, ROUTES.LANDING)
 
