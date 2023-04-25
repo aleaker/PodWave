@@ -18,20 +18,18 @@ const EpisodePlayer = () => {
 
 	PropTypes.checkPropTypes(contextPropTypes, { title, description, episodeUrl }, "context types", "EpisodePlayer")
 
-	const renderPlayer = () => {
-		return (
-			<StyledAudio controls autoPlay>
-				<source src={episodeUrl} type="audio/mpeg" />
-				Your browser does not support the audio element.
-			</StyledAudio>
-		)
-	}
-
 	return (
 		<StyledDisplayCard>
 			<Title>{title}</Title>
 			<Description dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
-			{episodeUrl ? renderPlayer() : <NotFound />}
+			{episodeUrl ? (
+				<StyledAudio controls autoPlay>
+					<source src={episodeUrl} type="audio/mpeg" />
+					Your browser does not support the audio element.
+				</StyledAudio>
+			) : (
+				<NotFound />
+			)}
 		</StyledDisplayCard>
 	)
 }
