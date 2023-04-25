@@ -1,32 +1,15 @@
-import { useLocation, useNavigation } from "react-router-dom"
+import { useNavigation } from "react-router-dom"
 
-import TextLink from "components/general/TextLink/TextLink"
+import HeaderTitle from "components/layouts/HeaderTitle/HeaderTitle"
 
-import ROUTES from "constants/routes"
-
-import { HeaderContainer, Title, Loader } from "./Header.styles"
+import { HeaderContainer, Loader } from "./Header.styles"
 
 const Header = () => {
 	const navigation = useNavigation()
-	const location = useLocation()
-
-	const renderTitle = () => {
-		const isLandingPath = location.pathname === ROUTES.LANDING
-
-		if (!isLandingPath) {
-			return (
-				<TextLink to={ROUTES.LANDING}>
-					<Title>Podcaster</Title>
-				</TextLink>
-			)
-		}
-
-		return <Title>Podcaster</Title>
-	}
 
 	return (
 		<HeaderContainer>
-			{renderTitle()}
+			<HeaderTitle />
 			{navigation.state === "loading" ? <Loader /> : null}
 		</HeaderContainer>
 	)
